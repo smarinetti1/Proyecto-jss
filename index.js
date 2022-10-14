@@ -1,84 +1,114 @@
-let valorAlfajor = 150;
-let valorChocolate = 300;
-let valorFernet = 1200;
-let valorGalletas = 220;
-
-
-let mercado = prompt("Hola, bienvenido al Mercado Hermanos del sur ¿Que desea? \n1-alfajor. \n2-chocolate. \n3-Fernet 750cc. \n4-Galletas surtidas \n5-Presiona X para salir")
-while (mercado != "X" && mercado != "x") {
-    switch (mercado) {
-        case "1":
-            let cantidadAlfajor = parseInt(prompt("Cuantos alfajores desea llevar"));
-            if (cantidadAlfajor <= 30 && cantidadAlfajor > 0) {
-                valorAlfajor *= cantidadAlfajor;
-                alert("El valor total de los alfajores es de " + valorAlfajor + "$" );
-            }
-            else if (cantidadAlfajor==0)
-                {
-                    alert("Elije una cantidad valida")
-                }
-            
-            else {
-                alert("No tenemos esa cantidad disponible")
-            }
-            break;
-        case "2":
-
-                let cantidadChocolate = parseInt(prompt("Cuantos chocolates desea llevar"));
-                if ( cantidadChocolate <= 23 && cantidadChocolate > 0) {
-                    valorChocolate *= cantidadChocolate
-                    alert("El valor total de los chocolates es de " +  valorChocolate+ "$" );
-                }
-                else if (cantidadChocolate==0)
-                    {
-                        alert("Elije una cantidad valida")
-                    }
-                
-                else {
-                    alert("No tenemos esa cantidad disponible")
-                }
-                break;
-        case "3":
-
-                let cantidadFernet = parseInt(prompt("Cuantas botellas desea llevar"));
-                if (cantidadFernet <= 8 && cantidadFernet > 0) {
-                    valorFernet *= cantidadFernet
-                    alert("El valor total del fernet es de " +  valorFernet+ "$" );
-                }
-                else if (cantidadFernet==0)
-                    {
-                        alert("Elije una cantidad valida")
-                    }
-                
-                else {
-                    alert("No tenemos esa cantidad disponible")
-                }
-                break;
-        case "4":
-                let cantidadGalletas = parseInt(prompt("Cuantos paquetes  desea llevar"));
-                if (cantidadGalletas <= 52 && cantidadGalletas > 0) {
-                    valorGalletas *= cantidadGalletas
-                    alert("El valor total de las galletas es de " + valorGalletas + "$" );
-                }
-                else if (cantidadGalletas==0)
-                    {
-                        alert("Elije una cantidad valida")
-                    }
-                
-                else {
-                    alert("No tenemos esa cantidad disponible")
-                }
-                break;
-            default:
-                alert("Elija una opcion valida")
-                break;
+class Producto {
+    constructor(nombre,tipo,precio,stock,id){
+this.nombre = nombre;
+this.tipo = tipo;
+this.precio = parseFloat(precio);
+this.stock = parseInt(stock);
+this.id = id;
     }
 
-        valorAlfajor = 150;
-        valorChocolate = 300;
-        valorFernet = 1200;
-        valorGalletas = 220;
-
-
-    mercado = prompt("Hola, bienvenido al Mercado Hermanos del sur ¿Que desea? \n1-alfajor. \n2-chocolate. \n3-Fernet 750cc. \n4-Galletas surtidas \n5-Presiona X para salir")
+asignarId(array){
+    this.id = array.length;
+}    
 }
+
+const Productos=[
+new Producto("Alfajor","golosina",150,30,1),
+new Producto("Chocolate","golosina",280,25,2),
+new Producto("Yogur","lacteo",320,29,3),
+new Producto("Leche","lacteo",250,40,4),
+new Producto("Fanta","gaseosa",270,20,5),
+new Producto("Sprite","gaseosa",265,22,6),
+new Producto("Fideos","alimento",120,50,7),
+new Producto("Atun","alimento",99,44,8)
+]
+
+
+
+let agregar = false; 
+
+for(let i = 2; i >= 0; i--){
+    let pedirId = prompt("Si es empleado por favor ingrese su numero de identificacion. Si no es el caso pulse X")
+if (pedirId == 1986) {
+    agregar = true;
+    break;
+}
+
+else if (pedirId.toUpperCase() == "X") {
+    alert("Perdon por la molestia, puede continuar");
+        break;
+}
+
+else {
+    if(i>=1){
+            alert("El numero de identificacion es incorrecto. Quedan "+i+ " intentos");
+    }
+    else{
+        alert("Se quedo sin intentos.");
+    }
+}
+}
+
+
+while(agregar){
+    let nuevoProducto = prompt("Si ingreso un nuevo producto al mercado, porfavor agreguelo a la base de datos, especificando: nombre,tipo,precio,stock, separados por (/). Si no desea agragar nada puede pulsar X para salir");
+
+
+if (nuevoProducto.toUpperCase() == "X") {
+    agregar = false;
+    break;
+}
+
+let info = nuevoProducto.split("/");
+console.log(info);
+const producto = new Producto(info[0],info[1],info[2],info[3],info[4]);
+
+Productos.push(producto);
+producto.asignarId(Productos);
+console.log(Productos);
+}
+
+let metodo = prompt("Elige la forma en la que se van a ver ordenados los productos: \n1 - Tipo de alimento \n2 - Precio (Mayor a Menor) \n3 - Precio (Menor a Mayor) \n4 - Stock disponible");
+
+function ordenar(metodo,array){
+
+    let arrayOrdenado = array.slice(0);
+
+    switch (metodo) {
+    case "1":
+            let tipoAlimento = arrayOrdenado.sort((a, b) => a.tipo.localeCompare(b.tipo));
+            return tipoAlimento;
+        
+    case "2":
+            return arrayOrdenado.sort((a, b) => b.precio - a.precio);
+        
+
+    case "3":
+            return arrayOrdenado.sort((a, b) => a.precio - b.precio);
+    
+
+    case "4":
+            return arrayOrdenado.sort((a, b) => b.stock - a.stock);
+        
+
+    default:
+        alert("Eige una opcion valida!")
+    }
+}
+
+function crearStringResultado(array){
+    let informacion="";
+
+array.forEach(Producto => {
+
+    informacion += "Nombre: " + Producto.nombre + "\nTipo: " + Producto.tipo + "\nPrecio: $" + Producto.precio + "\nStock disponible: " + Producto.stock + " unidades disponibles. \n\n"
+
+})    
+
+return informacion;
+}
+
+alert(crearStringResultado( ordenar(metodo, Productos)))
+
+
+
