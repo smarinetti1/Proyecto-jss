@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    #main-principal{
+        background: linear-gradient(rgba(4, 7, 12, 0.75) , rgba(4, 7, 12, 0.75)), url(../img/fondo.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    #main-animales {
+        background: linear-gradient(rgba(244, 246, 249, 0.75) , rgba(244, 246, 249, 0.75)), url(../img/bg-animales.webp) no-repeat center center;
+        background-size: cover;
+    }
+
+    .section-1 h1{
+        text-align: center;
+        text-shadow: 2px 3px rgba(151, 96, 134, 0.819);
+        color: #fff;
+        
+    }
+    .section-1 p {
+        text-align: center;
+        color: whitesmoke;
+        font-weight: 600;
+
+    }
+
+    .section-2{
+        color: aliceblue;
+    }
+
+    .section-2 .nosotros {
+        margin: 4px 0 6px 20px;
+    }
+
+    .section-2 .Objetivo {
+        text-align: right;
+        margin: 4px 20px 6px 0;
+    }
+
+    #gallery .col-lg-4 {
+        margin: 0 ;
+        padding: 25px;
+    
+    }
+    
+    #gallery div img {
+        width: 100%;
+        height: 250px;
+    
+    }
+    
+    #gallery div img:hover {
+        border: 5px solid #DED89E;
+    }
+
+    .cuadro{
+        border: 8px double #FFFFFF;
+
+    background: #DED89E;
+    }
+
+
+#form-contact{
+    margin: 40px;
+}

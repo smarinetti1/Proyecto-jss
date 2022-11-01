@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="./public_html/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Salva un animalito</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">Salva un animalito</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./animales.html">Animales en adopcion</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Informacion
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./contacto.html">Contacto</a></li>
+                                <li><a class="dropdown-item" href="#">sobre nosotros</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="./adopcion.html">Poner un animal en adopcion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+        </nav>
+    </header>
+        <main>
+            <main>
+                <h1 class="text-center">Pon en adopcion a un animalito</h1>
+                <p class="text-center text-secondary">Porfavor completa adecuadamente el formulario </p>
+                <form class="row g-3 needs-validation" id="form-contact" novalidate>
+                    <div class="mb-3">
+                        <label for="fromNombre" class="form-label">Nombre del animal</label>
+                        <input class="form-control" id="fromNombre" type="text" placeholder="Ingrese su nombre"
+                            aria-label="default input example" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Descripcion" class="form-label">Descripcion del animal</label>
+                        <textarea class="form-control" id="Descripcion" rows="3" required></textarea>
+                    </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Coloca una imagen del animal</label>
+                            <input type="image" class="form-control" id="image">
+                        </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form>
+            </main>
+        </main>
+        <footer>
+            
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+<script src="./index.js"></script>
+    </body>
+</html>
