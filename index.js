@@ -1,114 +1,109 @@
-// class Producto {
-//     constructor(nombre,tipo,precio,stock,id){
-// this.nombre = nombre;
-// this.tipo = tipo;
-// this.precio = parseFloat(precio);
-// this.stock = parseInt(stock);
-// this.id = id;
-//     }
+const usuarios = [{
+nombre:"santino" ,
+mail:"marinetti@123" ,
+contraseña: "1234657" ,
 
-// asignarId(array){
-//     this.id = array.length;
-// }    
-// }
-
-// const Productos=[
-// new Producto("Alfajor","golosina",150,30,1),
-// new Producto("Chocolate","golosina",280,25,2),
-// new Producto("Yogur","lacteo",320,29,3),
-// new Producto("Leche","lacteo",250,40,4),
-// new Producto("Fanta","gaseosa",270,20,5),
-// new Producto("Sprite","gaseosa",265,22,6),
-// new Producto("Fideos","alimento",120,50,7),
-// new Producto("Atun","alimento",99,44,8)
-// ]
-
-
-
-// let agregar = false; 
-
-// for(let i = 2; i >= 0; i--){
-//     let pedirId = prompt("Si es empleado por favor ingrese su numero de identificacion. Si no es el caso pulse X")
-// if (pedirId == 1986) {
-//     agregar = true;
-//     break;
-// }
-
-// else if (pedirId.toUpperCase() == "X") {
-//     alert("Perdon por la molestia, puede continuar");
-//         break;
-// }
-
-// else {
-//     if(i>=1){
-//             alert("El numero de identificacion es incorrecto. Quedan "+i+ " intentos");
-//     }
-//     else{
-//         alert("Se quedo sin intentos.");
-//     }
-// }
-// }
-
-
-// while(agregar){
-//     let nuevoProducto = prompt("Si ingreso un nuevo producto al mercado, porfavor agreguelo a la base de datos, especificando: nombre,tipo,precio,stock, separados por (/). Si no desea agragar nada puede pulsar X para salir");
-
-
-// if (nuevoProducto.toUpperCase() == "X") {
-//     agregar = false;
-//     break;
-// }
-
-// let info = nuevoProducto.split("/");
-// console.log(info);
-// const producto = new Producto(info[0],info[1],info[2],info[3],info[4]);
-
-// Productos.push(producto);
-// producto.asignarId(Productos);
-// console.log(Productos);
-// }
-
-// let metodo = prompt("Elige la forma en la que se van a ver ordenados los productos: \n1 - Tipo de alimento \n2 - Precio (Mayor a Menor) \n3 - Precio (Menor a Mayor) \n4 - Stock disponible");
-
-// function ordenar(metodo,array){
-
-//     let arrayOrdenado = array.slice(0);
-
-//     switch (metodo) {
-//     case "1":
-//             let tipoAlimento = arrayOrdenado.sort((a, b) => a.tipo.localeCompare(b.tipo));
-//             return tipoAlimento;
-        
-//     case "2":
-//             return arrayOrdenado.sort((a, b) => b.precio - a.precio);
-        
-
-//     case "3":
-//             return arrayOrdenado.sort((a, b) => a.precio - b.precio);
+},
+{
+    nombre:"gino" ,
+    mail:"rodriguez@123" ,
+    contraseña: "bocajuniors12" ,
     
-
-//     case "4":
-//             return arrayOrdenado.sort((a, b) => b.stock - a.stock);
+    },
+    {
+        nombre:"pedro" ,
+        mail:"rugeri@123" ,
+        contraseña: "holahola12" ,
         
+        },
 
-//     default:
-//         alert("Eige una opcion valida!")
-//     }
-// }
-
-// function crearStringResultado(array){
-//     let informacion="";
-
-// array.forEach(Producto => {
-
-//     informacion += "Nombre: " + Producto.nombre + "\nTipo: " + Producto.tipo + "\nPrecio: $" + Producto.precio + "\nStock disponible: " + Producto.stock + " unidades disponibles. \n\n"
-
-// })    
-
-// return informacion;
-// }
-
-// alert(crearStringResultado( ordenar(metodo, Productos)))
+]
 
 
 
+
+const mailLog = document.getElementById("emailLogin"),
+    password = document.getElementById("passwordLogin")
+    recordar = document.getElementById("recordarme")
+    btnLogin = document.getElementById('login'),
+    modalEl = document.getElementById('modalLogin'),
+    modal = new bootstrap.Modal(modalEl),
+    contTarjetas = document.getElementById('tarjetas'),
+    toggles = document.querySelectorAll('.toggles');
+
+    function validarUsuario(usersDB,user,pass){
+        let encontrado = usersDB.find(usersDB=>usersDB.mail == user);
+
+        if(typeof encontrado === "undefined"){
+            return false;
+        }
+        else{
+    if(encontrado.contraseña != pass){
+        return false;
+    }else{
+        return encontrado;
+    }
+    }
+}
+
+function guardarDatos(usuarioDB,storage) {
+    const usuario = {
+        "name" : usuarioDB.nombre,
+        "user" : usuarioDB.mail,
+        "pass" : usuarioDB.contraseña
+    }
+        storage.setItem("usuario", JSON.stringify(usuario));
+}
+
+function saludar(usuario) {
+    nombreUsuario.innerHTML = `Bienvenido/a, <span>${usuario.name}</span>`
+}
+
+function borrarDatos() {
+    localStorage.clear();
+    sessionStorage.clear();
+}
+
+function recuperarUsuario(storage){
+    let usuarioStorage = JSON.parse(storage.getItem("usuario"));
+    return usuarioStorage;
+}
+
+function usuarioLogueado(usuario){
+    if(usuario) {
+        saludar(usuario);
+            presentarInfo(toggles, "d-none");
+            
+    }
+}
+
+function presentarInfo (array, clase){
+    array.array.forEach(element => {
+        element.classList.toggle(clase);
+    });
+}
+
+btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    let data = validarUsuario(usuarios, mailLog.value, password.value);
+
+        if (!data) {
+            alert(`Usuario y/o contraseña erróneos`);
+        } else { if (recordar.checked) {
+            guardarDatos(data, localStorage);
+            saludar(recuperarUsuario(localStorage));
+        } else {
+            guardarDatos(data, sessionStorage);
+            saludar(recuperarUsuario(sessionStorage));
+        }
+    }
+
+});
+
+btnLogout.addEventListener('click', () => {
+    borrarDatos();
+    presentarInfo(toggles, 'd-none');
+});
+
+window.onload = () => usuarioLogueado(recuperarUsuario(localStorage)); 

@@ -46,37 +46,78 @@
                     </ul>
         </nav>
     </header>
-        <main>
-            <main>
-                <h1 class="text-center">Pon en adopcion a un animalito</h1>
-                <p class="text-center text-secondary">Porfavor completa adecuadamente el formulario </p>
-                <form class="row g-3 needs-validation" id="form-contact" novalidate>
-                    <div class="mb-3">
-                        <label for="fromNombre" class="form-label">Nombre del animal</label>
-                        <input class="form-control" id="fromNombre" type="text" placeholder="Ingrese su nombre"
-                            aria-label="default input example" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Descripcion" class="form-label">Descripcion del animal</label>
-                        <textarea class="form-control" id="Descripcion" rows="3" required></textarea>
-                    </div>
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Coloca una imagen del animal</label>
-                            <input type="image" class="form-control" id="image">
-                        </div>
+    <main>
+        <section id="guest" class="toggles">
+            <h2 class="text-center m-3">Ingrese sus credenciales para acceder - Sitio privado</h2>
+            <button id="btnModalLogin" class="btn btn-outline-primary me-2 toggles" type="button" data-bs-toggle="modal"
+            data-bs-target="#modalLogin">Login</button>
+        <button id="btnLogout" class="btn btn-outline-secondary d-none toggles" type="button">Logout</button>
+        <p id="nombreUsuario" class="d-none toggles"></p>
 
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+        <div class="modal " id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="modalLoginLabel">Ingresá</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
                     </div>
-                </form>
-            </main>
-        </main>
-        <footer>
-            
-        </footer>
+                    <div class="modal-body py-2 px-4">
+                        <input id="emailLogin" class="form-control my-4" type="email"
+                            placeholder="Ingresa tu correo electrónico" required>
+                        <input id="passwordLogin" class="form-control my-4" type="password"
+                            placeholder="Ingresa tu contraseña" required>
+                    </div>
+                    <div class="modal-footer d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="recordarme">
+                            <label class="form-check-label" for="recordarme">
+                                Recordarme en este equipo
+                            </label>
+                        </div>
+                        <button class="btn btn-outline-primary" id="login" type="submit">Ingresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+        <section id="logged" class="d-none toggles">
+            <h2>Contenido para usuarios logueados</h2>
+            <h2 class="text-center">Pon en adopcion a un animalito</h2>
+            <p class="text-center text-secondary">Porfavor completa adecuadamente el formulario </p>
+            <form class="row g-3 needs-validation" id="form-contact" novalidate>
+                <div class="mb-3">
+                    <label for="fromNombre" class="form-label">Nombre del animal</label>
+                    <input class="form-control" id="fromNombre" type="text" placeholder="Ingrese su nombre"
+                        aria-label="default input example" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Descripcion" class="form-label">Descripcion del animal</label>
+                    <textarea class="form-control" id="Descripcion" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Coloca una imagen del animal</label>
+                    <input type="image" class="form-control" id="image">
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
+        </section>
+
+
+
+    </main>
+    <footer>
+
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
-<script src="./index.js"></script>
-    </body>
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="../index.js"></script>
+</body>
+
 </html>
